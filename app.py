@@ -34,8 +34,10 @@ with mp_hands.Hands(
             # Accediendo a los puntos de referencia, de acuerdo a su nombre
                 # print(_, "esta cosa")
                 # print(results, type(results))
-                angulosid = obtenerAngulos(results, width, height)
-                dtw(angulosid, results, width, height)
+                datosAngulosYCoordenadas = obtenerAngulos(results, width, height)[0]
+                dtw(datosAngulosYCoordenadas[1])
+                angulosid = datosAngulosYCoordenadas[0]
+                print(angulosid)
 
                 dedos = []
                 # pulgar externo angle

@@ -184,4 +184,42 @@ def obtenerAngulos(results, width, height):
             angle6 = 0
 
         angulosid = [angle1, angle2, angle3, angle4, angle5, angle6]
-    return angulosid
+        coordenadasYAngulos = {"meñique":
+                               {
+                                   "x": [x1, x2, x3],
+                                   "y": [y1, y2, y3],
+                                   "angulo": angulosid[0]
+                               },
+                               "anular": {
+                                   "x": [x4, x5, x6],
+                                   "y": [y4, y5, y6],
+                                   "angulo": angulosid[1]
+                               },
+                               "medio": {
+                                   "x": [x7, x8, x9],
+                                   "y": [y7, y8, y9],
+                                   "angulo": angulosid[2]
+                               },
+                               "indice": {
+                                   "x": [x10, x11, x12],
+                                   "y": [y10, y11, y12],
+                                   "angulo": angulosid[3]
+                               },
+                               "pulgar externo": {
+                                   "x": [x13, x14, x15],
+                                   "y": [y13, y14, y15],
+                                   "angulo": angulosid[4]
+                               },
+                               "pulgar interno": {
+                                   "x": [x16, x17, x18],
+                                   "y": [y16, y17, y18],
+                                   "angulo": angulosid[5]
+                               }
+                               }
+
+                        #testing--------------------------------------
+                # print(dedos)
+                # print("meñique:", angle1, "anular:", angle2, "medio:", angle3,
+                #       "indice:", angle4, "pulgar 1:", angle5, "pulgar 2:", angle6)
+                # print (angle1, angle2, angle3, angle4, angle5, angle6)
+    return [angulosid, coordenadasYAngulos]
