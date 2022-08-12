@@ -2,6 +2,7 @@ import cv2
 import mediapipe as mp
 from Funciones.condicionales import condicionalesLetras
 from Funciones.normalizacionCords import obtenerAngulos
+from Funciones.dtw import dtw
 
 lectura_actual = 0
 
@@ -31,8 +32,10 @@ with mp_hands.Hands(
         results = hands.process(frame_rgb)
         if results.multi_hand_landmarks is not None:
             # Accediendo a los puntos de referencia, de acuerdo a su nombre
-                
-                angulosid = obtenerAngulos(results, width, height)[0]
+                # print(_, "esta cosa")
+                # print(results, type(results))
+                angulosid = obtenerAngulos(results, width, height)
+                dtw(angulosid, results, width, height)
 
                 dedos = []
                 # pulgar externo angle
@@ -53,25 +56,8 @@ with mp_hands.Hands(
                         dedos.append(1)
                     else:
                         dedos.append(0)
-
-                
-                TotalDedos = dedos.count(1)
                 condicionalesLetras(dedos, frame)
                 
-                pinky = obtenerAngulos(results, width, height)[1]
-                pinkY=pinky[1] + pinky[0]   
-                resta = pinkY - lectura_actual
-                lectura_actual = pinkY
-                print(abs(resta), pinkY, lectura_actual)
-                
-                if dedos == [0, 0, 1, 0, 0, 0]:
-                    if abs(resta) > 30:
-                        print("jota en movimento")
-                        font = cv2.FONT_HERSHEY_SIMPLEX
-                        cv2.rectangle(frame, (0, 0), (100, 100), (255, 255, 255), -1)
-                        cv2.putText(frame, 'J', (20, 80), font, 3, (0, 0, 0), 2, cv2.LINE_AA)
-                        
-
                 #testing--------------------------------------
                 # print(dedos)
                 # print("meñique:", angle1, "anular:", angle2, "medio:", angle3,
@@ -87,7 +73,6 @@ with mp_hands.Hands(
                             mp_drawing_styles.get_default_hand_landmarks_style(),
                             mp_drawing_styles.get_default_hand_connections_style())
         cv2.imshow('Frame', frame)
-        #mostra fotogramas por segundos
         
         if cv2.waitKey(1) & 0xFF == 27:
             break
