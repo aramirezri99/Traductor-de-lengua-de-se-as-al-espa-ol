@@ -2,6 +2,7 @@ import mediapipe as mp
 from math import degrees, acos
 import numpy as np
 
+
 # actualizacion
 mp_hands = mp.solutions.hands
 
@@ -217,9 +218,5 @@ def obtenerAngulos(results, width, height):
                                }
                                }
 
-                        #testing--------------------------------------
-                # print(dedos)
-                # print("meñique:", angle1, "anular:", angle2, "medio:", angle3,
-                #       "indice:", angle4, "pulgar 1:", angle5, "pulgar 2:", angle6)
-                # print (angle1, angle2, angle3, angle4, angle5, angle6)
+
     return [angulosid, coordenadasYAngulos]
