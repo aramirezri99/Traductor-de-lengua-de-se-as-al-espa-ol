@@ -1,63 +1,91 @@
-# Traductor de señas
+# Bienvenido al proyecto interprete de lengua de seña Colombiano! 📷💻
 
-_Traductor de lengua de señas al español basado en Python con Opencv y MedaiPipe_
-https://youtu.be/KKhuqK2S7Zs
-![Captura desde 2022-09-18 13-48-28](https://user-images.githubusercontent.com/48532611/190923572-6ea58307-a96e-4214-ad10-5fcfd2de8b26.png)
+Este proyecto tiene como objetivo procesar imágenes enviadas por usuarios a través de una API para hacer la predicción de que letra del abecedario de la lengua de seña esta haciendo en el momento de que envia la imagen. Estoy usando FastAPI, una biblioteca Python moderna y rápida para crear APIs, para crear nuestro servidor de procesamiento de imágenes.
 
-### Requerimientos 🔧
+# 🚀 Empezamos
 
-_Python 3.8 o inferior para evitar errores_
+Esta es una API desarrollada con el fin de:
 
-### Instalación 🔧
+- Procesar imágenes enviadas por los usuarios en tiempo real.
+- Hacer la predicción de que letra del abecedario de la lengua de seña esta haciendo en el momento de que envia la imagen.
+- Devolver la predicción de la letra a los usuarios.
 
-_Luego de clonar el repositorio o haberlo descargado_
+# 💻 Instalación
 
-_Abre la terminal, en el caso de Windows escribe:_
+Primero como buena practica es crear un entorno virtual de desarrollo para este proyecto, para ello puedes usar el siguiente comando:
+
+```python
+python -m venv venv
+```
+Ahora que ya tienes el entorno virtual creado, puedes activarlo con el siguiente comando:
+
+windows:
+```python
+venv\Scripts\activate
+```
+linux:
+```python
+source venv/bin/activate
+```
+
+Para comenzar simplemente debes clonar este repositorio y ejecutar el siguiente comando para instalar las dependencias necesarias para el proyecto
 
 ```
-pip install -r requirements.txt
-```
-
-
-## Ejecutando las pruebas ⚙️
-
-_Una vez instalado las librerias escribe en tu terminal en la ubicacion raiz del repositorio:_
+pip install -r requirements.txt --use-pep517
 
 ```
-py app.py
-python app.py
-python3 app.py
+
+IMPORTANT👀 para la version de Python que se utilizo para este proyecto es la:
+
+## Python 3.8 🐍
+(a dia de 04/02/2023 tiene errores con Python 3.11.1)
+Por lo que se recomienda utilizar esta versión para evitar problemas con las dependencias aunque se puede trabajar con versiones anteriores o superiores si lo desea en excepción de la 3.6.0 y anteriores.
+
+Ahora que ya tienes las dependencias instaladas, puedes ejecutar el siguiente comando para iniciar el servidor de desarrollo(Estando en la carpeta "app"):
+
+```
+uvicorn main:app --reload
+
 ```
 
-## Construido con 🛠️
+y listo! ya tienes el servidor corriendo en [http://localhost:8000/docs](http://localhost:8000/docs) 🎉
 
-_Menciona las herramientas que utilizaste para crear tu proyecto_
+# 🧱 Estructura
 
-* [MediaPipe](https://google.github.io/mediapipe/solutions/hands) - Librería principal para la detección de la posición de las manos
-* [OpenCV](https://docs.opencv.org/4.5.5/) - Visor y capturador de imagen para la identificacion
-* [NumPy](https://numpy.org/) - Usado para generar normalización de las coordenadas
+La estructura de la aplicación se divide en algunos componentes diferentes:
 
-##Contribuyendo 🖇️
+## 📁 app
 
-Por favor comunicate [Contactar](https://api.whatsapp.com/send/?phone=+573226099206) para detalles de nuestro código de conducta, y el proceso para enviarnos solicitudes de extracción.
+Esta carpeta contiene el código de la aplicación. Aquí es donde se encuentra el código de la API y el código de procesamiento de imágenes.
 
+## 📁 app/api
 
-## Autores ✒️
+Esta carpeta contiene el código de la API. Aquí es donde se encuentra el código de FastAPI.
 
-* **Cesar Ortiz** - [Cesar Ortiz](https://github.com/CesarOrtizTIC)
-* **Jahaziel Hernández** - [Jahaziel Hernández](https://github.com/JahazielHernandezHoyos)
+## 📁 app/api/endpoints
 
+Esta carpeta contiene los endpoints de la API. Aquí es donde se encuentra el código de FastAPI para cada ruta.
 
-## Licencia 📄
+## 📁 app/core
 
-Este proyecto está bajo la Licencia Creative Commons Attribution - mira el archivo [LICENSE.md](LICENSE.md) para detalles
+Esta carpeta contiene el archivo "artificial_intelligence_processor.py" que contiene el código para procesar las imágenes.
 
-## Expresiones de Gratitud 🎁
+# Cómo funciona 🤔
 
-* Espero puedan aportar y crear nuevos avances con este proyecto 📢
-* Gracias por el apoyo de Cesar en especial por todo el aporte dado🤓.
+Cuando un usuario envía una imagen a través de una solicitud POST multipart/form-data al enpoint `/process-image`, la imagen se pasa al módulo processing_images.py, donde se procesa mediante MediaPipe. A continuación, hace la prediccion y estimacion y devuelve la letra a la que se puede estarse interpretando el cual es un codigo que esta basado en un antiguo trabajo respecto al tema el cual en su codigo puro de python es: https://github.com/JahazielHernandezHoyos/Traductor-de-lengua-de-se-as-al-espa-ol.
 
+# ❤️ Contribución
 
+Si desea contribuir a este proyecto, ¡sería genial! Puede hacerlo a través de pull requests y asegurándose de seguir nuestras pautas de contribución.
 
----
-⌨️ con ❤️ por [Jahaziel Hernandez](https://github.com/JahazielHernandezHoyos) 😊
+# 💬 Preguntas frecuentes
+
+¿Qué es FastAPI? FastAPI es una biblioteca Python para crear APIs. Es moderno, rápido y fácil de usar.
+
+¿Cómo procesa las imágenes? Usamos una combinación de bibliotecas de procesamiento de imágenes y código personalizado para procesar las imágenes enviadas por los usuarios con librerias como [mediapipe](https://mediapipe.dev/) y cálculos con numpy para hacer esta interpretación de señas.
+
+¿Qué pasa si tengo un problema con la aplicación? Si tienes algún problema o pregunta, no dudes en abrir una incidencia en este repositorio o enviarnos un correo electrónico a [jahazielhernandezhoyoz@gmail.com](mailto:jahazielhernandezhoyoz@gmail.com). Estaré encantado de ayudarte 🤓.
+
+# 🎉 ¡Gracias por usar este interprete de señas Colombiano!
+
+Espero que disfrutes de este proyecto tanto como disfrute creándolo. ¡Haz algo genial con él!
