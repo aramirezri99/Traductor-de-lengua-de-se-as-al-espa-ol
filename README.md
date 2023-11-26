@@ -1,4 +1,7 @@
 # Traductor de lenguaje de señas en Python
+# Nota importante: 
+Actualmente existe una version mejorada y optimizada de este algoritmo, esta incluida dentro de una API rest puedes ver mas informacion aqui:
+https://youtu.be/Wq79oesOEVc
 
 _Proyecto de traductor de lenguaje de señas en español basado en Python con OpenCV y MediaPipe._
 
